@@ -1,30 +1,43 @@
 package jeux1.pendu;
 
 import javax.swing.*;
+import java.io.*;
 
 public class game {
 
-
     /**
      * @param reponse est un boolean, true s'il a trouvé la bonne lettre
-     * @param chanceRestante est un tableau boolean qui indique son nombre de vies
+     * @param vieRestante est un tableau boolean qui indique son nombre de vies
      * @param indiceTab indique l'indice du tableau du nombre de vies qu'il reste au joueur
      * @return retourne un tableau qui indique son nombre de chances restant
      */
-    public static boolean[] vieRestant(boolean reponse,boolean []chanceRestante, int indiceTab){
-        chanceRestante[indiceTab]= reponse;
-        return chanceRestante;
+    public static boolean[] vieRestant(boolean reponse,boolean []vieRestante, int indiceTab){
+        vieRestante[indiceTab]= reponse;
+        return vieRestante;
     }
 
-    public static int indiceTab(boolean [] chanceRestante,int indice){
-        for (int i = 0; i < chanceRestante.length-1; i++) {
-            if (chanceRestante[i]){
-                indice++;
+    /**
+     *
+     * @param chanceRestante les vie qu'il reste a utilisateur
+     * @param indice indique qu'il doit passer passer a la case suivante si le joeur a perdu une vie
+     * ( a rentré une mauvaise lettre )
+     * @return l'indice
+     */
+    public static int indiceError(boolean reponse){
+        int indice =0;
+            if (!reponse){ indice =1;}
+        return indice;
+    }
+
+    public static int indiceDeLettre(char [] motRechercher, char lettre){
+        int indice=11;
+        for (int i = 0; i < motRechercher.length; i++) {
+            if (motRechercher[i]==lettre){
+                 return indice=i;
             }
         }
         return indice;
     }
-
     /**
      * @param lettreDuJoueur lettre demander au joueur
      * @param motRechercher le mot que l'on devra trouver qui sera dans un tab char
@@ -37,8 +50,7 @@ public class game {
         }
         return bonneLettre;
     }
-    public static boolean fin(boolean[] chanceRestant){
-        int fin =chanceRestant.length;
-        return fin == 10;
+    public static boolean fin(int indiceError){
+        return indiceError != 10;
     }
 }

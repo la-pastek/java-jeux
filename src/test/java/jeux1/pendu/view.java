@@ -1,13 +1,26 @@
 package jeux1.pendu;
 
+import java.util.Arrays;
+
 public class view {
 
-    public static void vieView(boolean[] vieRestant, int indice){
-        for (int i = 0; i < vieRestant.length; i++) {
-            if (vieRestant[i]){
-                System.out.print("<3 ");
-            }
+    public static void vieView(int indice){
+        int affiche=10;
+        System.out.println();
+        for (int i = 0; i < 10-indice; i++) {
+            System.out.print("<3 ");
+            affiche=i;
         }
-        System.out.print(": "+indice);
+        System.out.print(": "+(affiche+1));
+    }
+
+    public static void motView(char [] motCacher,boolean verificationLettre,int indiceDuchar,char lettre){
+    if(verificationLettre){
+        motCacher[indiceDuchar]=lettre;
+    }
+        System.out.println();
+        for (int i = 0; i <motCacher.length ; i++) {
+            System.out.print(" "+motCacher[i]);
+        }
     }
 }
