@@ -1,4 +1,4 @@
-package jeux1.pendu;
+package pendu;
 
 import java.util.ArrayList;
 import java.util.List;

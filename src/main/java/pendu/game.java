@@ -1,4 +1,4 @@
-package jeux1.pendu;
+package pendu;
 
 import javax.swing.*;
 import java.io.*;
